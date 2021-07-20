@@ -10,6 +10,7 @@ class AuthController extends Controller
     {
         $request->authenticate();
         $user = $request->user();
+        // TODO: tokens don't expire, need to fix that
         $token = $user->createToken('session_token')->plainTextToken;
 
         return response([

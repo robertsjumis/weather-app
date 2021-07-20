@@ -9,6 +9,8 @@ class Reading extends Model
 {
     use HasFactory;
 
+    //TODO: create station model and setup relationship with weather reading
+
     protected $table = 'weather_readings';
 
     protected $casts = [

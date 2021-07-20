@@ -13,14 +13,15 @@ class AverageReadingsController extends Controller
     public function show(Request $request)
     {
         // TODO input validation
-
+        Log::debug("AverageReadingsController::show()");
         // TODO floor timestamp to start of the day - 00:00:00
         $timestamp = $request->get('timestamp');
         $readings = Reading::whereRaw("station_timestamp >= FROM_UNIXTIME($timestamp)")
             ->whereRaw("station_timestamp < FROM_UNIXTIME($timestamp) + INTERVAL 24 HOUR")
             ->get();
+        Log::debug("Weather readings fetched!");
         $reading = $this->calculateAverage($readings);
-
+        Log::debug("Average weather readings calculated!");
         return new ReadingResource($reading);
 
     }

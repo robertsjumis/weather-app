@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ReadingResource;
 use App\Models\Reading;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ReadingsController extends Controller
 {
     public function show(Request $request)
     {
+        Log::debug("ReadingsController::show()");
+
         // TODO input validation
 
         $stationId = $request->get('station_id');
@@ -25,6 +28,8 @@ class ReadingsController extends Controller
 
     public function showLast()
     {
+        Log::debug("ReadingsController::showLast()");
+
         $reading = Reading::orderByDesc('station_timestamp')
                             ->limit(1)
                             ->get();

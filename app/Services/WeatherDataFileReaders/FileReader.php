@@ -19,6 +19,7 @@ abstract class FileReader
     private function saveFileContents(string $fileName): void
     {
         $contents = Storage::disk('data')->get($fileName);
+        Log::debug("Fetched $fileName contents!");
         // TODO: validations
         $this->fileContents = $contents;
     }

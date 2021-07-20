@@ -22,4 +22,12 @@ class ReadingsController extends Controller
                         ->get();
         return ReadingResource::collection($reading);
     }
+
+    public function showLast()
+    {
+        $reading = Reading::orderByDesc('station_timestamp')
+                            ->limit(1)
+                            ->get();
+        return ReadingResource::collection($reading);
+    }
 }

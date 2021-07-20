@@ -3,7 +3,6 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AverageReadingsController;
 use App\Http\Controllers\ReadingsController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +20,4 @@ Route::post('/auth', [AuthController::class, 'auth']);
 
 Route::middleware('auth:sanctum')->get('/reading', [ReadingsController::class, 'show']);
 Route::middleware('auth:sanctum')->get('/averageReadings', [AverageReadingsController::class, 'show']);
+Route::middleware('auth:sanctum')->get('/lastEntry', [ReadingsController::class, 'showLast']);

@@ -30,6 +30,12 @@ return [
 
     'disks' => [
 
+        // TODO move to storage folder, as stuff like weather readings should be saved there
+        'data' => [
+            'driver' => 'local',
+            'root' => base_path('data')
+        ],
+
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
